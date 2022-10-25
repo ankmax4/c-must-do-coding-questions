@@ -1,0 +1,43 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+void leaders(int *a, int size){
+    
+    // vector<int>vect;
+    
+    // vect.push_back(a[n-1]);
+    int max = a[size-1];
+    cout << max <<" ";
+    for(int i = size-2;i>=0;i--){
+        if(a[i]>max){
+            // vect.push_back(a[i]);
+            cout << a[i] << " ";
+            max = a[i];
+        }
+    }
+    
+    
+}
+
+int main()
+{
+    int A[] = {16,17,4,3,5,2};
+    
+    int size = sizeof(A)/sizeof(A[0]);
+    
+    leaders(A,size);
+    
+    
+    
+
+    return 0;
+}
