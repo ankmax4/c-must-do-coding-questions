@@ -1,0 +1,94 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+
+
+void merge(int *a, int low, int mid , int end){
+    
+    int size1 = (mid-low + 1);
+    int size2 = end-mid;
+    
+    int *n1 = new int[size1];
+    int *n2 = new int[size2];
+    
+    for(int i = 0; i<size1;i++){
+        n1[i] = a[low +i];
+    }
+    
+    for(int j = 0; j<size2;j++){
+        n2[j] = a[mid+1 + j];
+    }
+    
+    
+   int i = 0;
+   int j = 0;
+   int k = low;
+   
+   while(i<size1 && j < size2){
+       
+       if(n1[i]<= n2[j]){
+         a[k] = n1[i];
+         i++;
+         k++;
+       }
+       
+       else {
+           a[k] = n2[j];
+           j++;
+           k++;
+       }
+   }
+   
+   while(i<size1){
+      a[k] = n1[i];
+      k++;
+      i++;
+   }
+    
+    while(j<size2){
+      a[k] = n2[j];
+      k++;
+      j++;
+   }
+    
+}
+
+
+void mergesort(int *a, int low , int end){
+    
+    if(low < end){
+      
+      int mid = (low + end)/2;
+      mergesort(a, low, mid);
+      mergesort(a,mid +1 ,end);
+      merge(a,low, mid, end);
+    }
+    
+}
+
+
+void print(int *a, int size){
+    
+    for(int i = 0; i < size;i++){
+        cout <<a[i] <<" ";
+    }
+}
+int main()
+{
+    cout<<"Hello World";
+    int a[] = {4,6,2,5,7,9,13};
+    int size = sizeof(a)/sizeof(a[0]);
+    mergesort(a,0, size-1);
+    print(a, size);
+    
+
+    return 0;
+}
