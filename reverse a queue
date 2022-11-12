@@ -1,0 +1,57 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+#include<queue>
+#include<stack> 
+using namespace std;
+
+queue<int> reversal(queue<int>q){
+    
+    stack<int>s;
+    
+    while(!q.empty()){
+        
+        int val = q.front();
+        q.pop();
+        s.push(val);
+    }
+    
+    
+    
+    while(!s.empty()){
+        
+        int val = s.top();
+        s.pop();
+        q.push(val);
+    }
+    
+    
+    return q;
+}
+
+int main()
+{
+    int arr[] = {1,2,3,4,5,6};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    queue<int>q;
+    int i = 0;
+    while(i<6){
+        q.push(arr[i]);
+        i++;        
+    }    
+    
+    q = reversal(q);
+    
+    
+    while(!q.empty()){
+        
+        cout << q.front();
+        q.pop();
+    }
+}
